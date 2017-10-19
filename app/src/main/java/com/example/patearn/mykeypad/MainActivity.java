@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     TextView textView2;
     TextView textView3;
     TextView textView4;
+    Button resetButton;
     TextView ellapse;
     char positionChar;
     int currenTextLength = 0;
@@ -53,19 +55,14 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     CheckBox checkBox;
 
     final static int IDLE = 0;
-    final static int RUNNING = 1;
-    final static int PAUSE = 2;
-    int mStatus = IDLE;//처음 상태는 IDLE
     long mBaseTime;
-    long mPauseTime;
-    int mSplitCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editText = (EditText) findViewById(R.id.editText);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        resetButton = (Button) findViewById(R.id.resetButton);
         leftArrow = (ImageView) findViewById(R.id.leftArrow);
         rightArrow = (ImageView) findViewById(R.id.rightArrow);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
@@ -145,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
                 }
             }
         });
-        imageView.setOnClickListener(new View.OnClickListener() {
+        resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editText.setText("");
@@ -252,8 +249,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
 
 
         textView2.setText(stringToDisplay);
-        System.out.println("for문 끝나고 난 뒤의 stringToDisplay: "+stringToDisplay);
-        System.out.println("for문 끝나고 난 뒤의 stringToDisplay: "+textView3.getText().toString());
+
         if (stringToDisplay.equals(textView3.getText().toString())) {
             stopTimer();
             timerIndex = 0;
