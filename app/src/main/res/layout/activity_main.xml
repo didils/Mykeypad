@@ -7,43 +7,140 @@
     android:layout_height="match_parent"
     tools:context="com.example.patearn.mykeypad.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_above="@id/autoFit"
+        android:gravity="bottom">
+
+        <ImageView
+            android:id="@+id/leftArrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/ic_keyboard_arrow_left_black_24dp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="20"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="9sp"
+                android:text="출처표시"/>
+
+            <me.grantland.widget.AutofitLayout
+                android:id="@+id/autoFit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="3"
+                    android:text="예문"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    autofit:minTextSize="8sp" />
+            </me.grantland.widget.AutofitLayout>
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:id="@+id/rightArrow"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    </LinearLayout>
+
+
+
     <me.grantland.widget.AutofitLayout
         android:id="@+id/autoFit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/editText"
+        android:layout_height="120dp"
+        android:layout_above="@id/linear"
+        android:background="@drawable/rounded"
+        android:layout_margin="5dp"
+        android:padding="10dp"
         >
         <TextView
-            android:textSize="40sp"
+            android:textSize="22sp"
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="임시"
+            android:text="위의 예문을 따라서 입력해 보세요"
             android:layout_gravity="bottom"
-            android:maxLines="7"
-            autofit:minTextSize="16sp"/>
+            android:maxLines="4"
+            autofit:minTextSize="10sp"/>
     </me.grantland.widget.AutofitLayout>
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:inputType="text"
+        android:textSize="14sp"
         android:maxLines="1"
         android:hint="타이핑 공간"
-        android:layout_above="@id/textView"
-        />
+        android:layout_alignParentBottom="true">
+        <requestFocus />
+    </EditText>
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@id/editText"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/ellapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:gravity="center"
+            android:layout_marginRight="20dp"
+            android:textSize="30sp"/>
+
+
+        <ImageView
+        android:id="@+id/imageView"
+        android:background="@drawable/ic_delete_black_24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:padding="20dp"/>
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="자동변환" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>
